@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author victor
+ */
 @Slf4j
 @Service
 public class ScoreCalculationService {
@@ -23,6 +26,11 @@ public class ScoreCalculationService {
         this.amazonIntegration = amazonIntegration;
     }
 
+    /**
+     * Return the score in comparison with Amazon API completion
+     * @param keyword String
+     * @return Mono<Integer>
+     */
     public Mono<Integer> calculate(String keyword) {
         return amazonIntegration.get(keyword, keyword).map(response -> {
             List<Integer> scores = new ArrayList<>(Collections.singletonList(0));
@@ -36,6 +44,11 @@ public class ScoreCalculationService {
         });
     }
 
+    /**
+     * @param source String
+     * @param target String
+     * @return double
+     */
     public double calculateSimilarity(String source, String target) {
         if (!StringUtils.isEmpty(source) && !StringUtils.isEmpty(target)) {
             if (StringUtils.equals(source, target)) return 1.0D;
@@ -46,6 +59,12 @@ public class ScoreCalculationService {
         } return 0.0D;
     }
 
+    /**
+     * Levenshtein Calculation
+     * @param source String
+     * @param target String
+     * @return int
+     */
     private int calcLevenshtein(String source, String target) {
         int sourceCount = source.length();
         int targetCount = target.length();

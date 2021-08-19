@@ -6,6 +6,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+/**
+ * @author victor
+ */
 public abstract class Integration {
 
     private final WebClient webClient;
@@ -16,6 +19,11 @@ public abstract class Integration {
                 .build();
     }
 
+    /**
+     * @param uriParams String
+     * @param object Object
+     * @return Mono<?>
+     */
     public Mono<?> get (String uriParams, Object object) {
         return webClient.method(HttpMethod.GET)
                 .uri(uriParams)

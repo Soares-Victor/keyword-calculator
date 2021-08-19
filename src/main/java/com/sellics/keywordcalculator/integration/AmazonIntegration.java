@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+/**
+ * @author victor
+ */
 @Component
 public class AmazonIntegration extends Integration{
 
@@ -14,6 +17,11 @@ public class AmazonIntegration extends Integration{
         super(baseUrl);
     }
 
+    /**
+     * @param uriParams String
+     * @param object Object
+     * @return Mono
+     */
     @Override
     public Mono<?> get(String uriParams, Object object) {
         String uri = "?search-alias=".concat(SEARCH_ALIAS).concat("&mkt=").concat(MKT).concat("&q=").concat(uriParams);

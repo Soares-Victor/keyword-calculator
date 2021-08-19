@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+/**
+ * @author victor
+ */
 @Service
 public class EstimationService {
 
@@ -17,6 +20,11 @@ public class EstimationService {
         this.service = service;
     }
 
+    /**
+     * @param keyword String
+     * @return Mono<EstimationResponse>
+     * @see EstimationResponse
+     */
     public Mono<EstimationResponse> estimate(String keyword) {
         if (isInvalidKeyWord(keyword)) throw new BadRequestException("Invalid Keyword to estimate!");
         return service.calculate(keyword).map(score -> EstimationResponse.builder()
@@ -25,6 +33,11 @@ public class EstimationService {
                 .build());
     }
 
+    /**
+     * Check if keyword is invalid
+     * @param keyword String
+     * @return boolean
+     */
     private boolean isInvalidKeyWord(String keyword) {
         return  keyword == null ||
                 keyword.isEmpty() ||

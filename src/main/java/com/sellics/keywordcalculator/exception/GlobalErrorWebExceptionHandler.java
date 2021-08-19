@@ -17,17 +17,30 @@ import reactor.core.publisher.Mono;
 
 import java.util.Map;
 
+/**
+ * @author victor
+ */
 @Component
 @Order(-2)
 @Slf4j
 public class GlobalErrorWebExceptionHandler extends
         AbstractErrorWebExceptionHandler {
 
+    /**
+     * @param errorAttributes ErrorAttributes
+     * @param resources WebProperties.Resources
+     * @param applicationContext ApplicationContext
+     * @param configurer ServerCodecConfigurer
+     */
     public GlobalErrorWebExceptionHandler(ErrorAttributes errorAttributes, WebProperties.Resources resources, ApplicationContext applicationContext, ServerCodecConfigurer configurer) {
         super(errorAttributes, resources, applicationContext);
         this.setMessageWriters(configurer.getWriters());
     }
 
+    /**
+     * @param errorAttributes ErrorAttributes
+     * @return RouterFunction<ServerResponse>
+     */
     @Override
     protected RouterFunction<ServerResponse> getRoutingFunction(
             ErrorAttributes errorAttributes) {
@@ -36,6 +49,10 @@ public class GlobalErrorWebExceptionHandler extends
                 RequestPredicates.all(), this::renderErrorResponse);
     }
 
+    /**
+     * @param request ServerRequest
+     * @return ServerRequest
+     */
     private Mono<ServerResponse> renderErrorResponse(
             ServerRequest request) {
 

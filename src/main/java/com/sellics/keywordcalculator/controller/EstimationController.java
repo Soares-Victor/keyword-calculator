@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
+/**
+ * @author victor
+ */
 @RestController
 @RequestMapping("/estimates")
 @Tag(name = "Estimation", description = "Estimation Calculator")
@@ -26,6 +29,11 @@ public class EstimationController {
         this.estimateService = estimateService;
     }
 
+    /**
+     * @param keyword String
+     * @see Mono<EstimationResponse>
+     * @return EstimationResponse
+     */
     @GetMapping
     @Operation(summary = "Estimate Keyword", description = "Estimate Keyword Auto Complete Amazon")
     @ApiResponses({
