@@ -1,8 +1,8 @@
 # Keyword Calculator
 The proposal of this project is calculate how reliable is a keyword using the public API of Amazon Completion.
-My considerations are in this [html page](docs/index.html) or [readme](docs/Readme.md).
+My considerations are in this [html page(Open Local)](docs/index.html) or [readme](docs/Readme.md).
 
-[html page](docs/index.html) or [readme](docs/Readme.md).
+[html page(Open Local)](docs/index.html) or [readme](docs/Readme.md).
 
 # How to run
 1. Clone repository:
