@@ -4,7 +4,7 @@ The proposal of this project is calculate how reliable is a keyword using the pu
 # How to run
 1. Clone repository:
 ```sh
-$ git clone https://github.com/Soares-Victor/room-occupancy-manager-api.git
+$ git clone https://github.com/Soares-Victor/keyword-calculator.git
 ```
 
 2. Change Directory:
